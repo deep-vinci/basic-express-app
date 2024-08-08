@@ -1,17 +1,20 @@
 const express = require("express");
 const authorRouter = require("./routes/authorRouter");
+const testRouter = require("./routes/testRouter");
+
 const app = express();
 
 require("dotenv").config();
 
 const PORT = process.env.PORT;
 
-app.use("/authors", authorRouter);
+app.use("/demo+", authorRouter);
+app.use("/test", testRouter);
 
-// app.all("/", (req, res) => {
-//     console.log(req)
-//     res.send("Hello World")
-// })
+app.all("/", (req, res) => {
+    console.log(req)
+    res.status(404).send("HIII");
+})
 
 // app.all("/messages", (req, res) => {
 //     res.send("This is where you can see messages")
